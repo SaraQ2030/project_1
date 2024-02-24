@@ -46,6 +46,11 @@ public class Main {
             switch (player) {
                 case 1:
                     //---------------------------------------------------1player----------------------------------------------------------
+                    System.out.println("you want 1/ round 2/rounds ");
+                    int r=input.nextInt();
+                    if (r>3 && r<=0){
+                        throw new Exception("Enter number 1 or 2 for rounds ");
+                    }
                     System.out.println("Choose a role X or O");
                     String role = input.next();
 //                    if ( !role.equalsIgnoreCase("X")  || ( !role.equalsIgnoreCase("O")) ){
@@ -54,6 +59,7 @@ public class Main {
                     //Start to play---------------------------------------------------------------------------------------------
                     if (role.equalsIgnoreCase("x")) {
                         String rolx = "o";
+                        while (r>0){
 
                         while (full(board) && (!win(board))) {
                             do {
@@ -84,6 +90,9 @@ public class Main {
 
 
                             }
+                        }
+                        r--;
+
                         }
                         print_score(board);
 
@@ -119,9 +128,11 @@ public class Main {
                                 }
                             }
                         }
+
                         print_score(board);
                     }
                     break;
+
                 case 2://-------------------------------------------------2player------------------------------------------------------------
 
                     //--Ask the user to pick a role (X or O)--------------------------------------------------------------------
@@ -421,6 +432,169 @@ public class Main {
 
         }
 
+        //_____________________________________________________THE CALCULATOR ________________________________________________________
+
+//    public static void main(String[] args) {
+//
+//        ArrayList<Integer>  cal= new ArrayList<Integer>();
+//        int num1;
+//        int num2;
+//        int add;
+//        int sub;
+//        int mul;
+//        int div;
+//        int mod;
+//        int avr;
+//        int min;
+//        int max;
+//        int ans;
+//        String q="q";
+//        Scanner input=new Scanner(System.in);
+//int sum=0;
+//        int choose;
+//
+//
+//try {
+//    do {
+//        System.out.println("Enter number to perform");
+//        System.out.println("1/ addithion");
+//        System.out.println("2/ subtract");
+//        System.out.println("3/ Multiplication");
+//        System.out.println("4/ Division");
+//        System.out.println("5/ Module");
+//        System.out.println("6/ Minimum");
+//        System.out.println("7/ Maximum");
+//        System.out.println("8/ Find the average ");
+//        System.out.println("9/ Last result");
+//        System.out.println("10/ Print list of all answers");
+//        System.out.println("0/ Quit");
+//        choose = input.nextInt();
+//        switch (choose) {
+//            case 1:
+//                System.out.println("Enter number to add ");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//
+//                cal.add(addition(num1, num2));
+//                break;
+//            case 2:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//
+//                cal.add(sub(num1, num2));
+//                break;
+//            case 3:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//                cal.add(mul(num1, num2));
+//
+//                break;
+//            case 4:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//
+//                cal.add(div(num1, num2));
+//
+//                break;
+//            case 5:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//                cal.add(mod(num1, num2));
+//                break;
+//            case 6:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//                cal.add(min(num1, num2));
+//
+//                break;
+//            case 7:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//                cal.add(max(num1, num2));
+//                break;
+//            case 8:
+//                System.out.println("Enter number 1");
+//                num1 = input.nextInt();
+//                System.out.println("Enter number 2");
+//                num2 = input.nextInt();
+//                cal.add(avr(num1, num2));
+//                break;
+//            case 9:
+//                System.out.println("The last answer is " + cal.getLast());
+//
+//                break;
+//            case 10:
+//                System.out.println(cal);
+//                break;
+//
+//
+//        }
+//    } while (!(choose == 0));
+//}catch (InputMismatchException e)
+//{
+//    System.out.println("Enter numbers only");
+//}catch (ArithmeticException e){
+//    System.out.println("Cannot divid by zero");
+//}
+//
+//    }
+//
+//
+//    public static int addition(int x,int y){
+//        int sum=0;
+//        sum=x+y;
+//        System.out.println("The answer is " + sum);
+//        return sum;
+//    }
+//    public static int sub(int x,int y){
+//        int sub=x-y;
+//        System.out.println("The answer is " + sub);
+//        return sub;
+//    }
+//    public static int mul(int x,int y){
+//        int mul=x*y;
+//        System.out.println("The answer is " + mul);
+//        return mul;
+//    }
+//    public static int div(int x,int y){
+//        int div=x/y;
+//        System.out.println("The answer is " + div);
+//        return div;
+//    }
+//    public static int mod(int x,int y){
+//        int mod=x%y;
+//        System.out.println("The answer is " + mod);
+//        return mod;
+//    }
+//
+//    public static int min(int x,int y){
+//        int     min = Math.min(x, y);
+//        System.out.println("The answer is " + min);
+//        return min;
+//    }
+//    public static int max(int x,int y){
+//        int     max = Math.max(x, y);
+//        System.out.println("The answer is " + max);
+//        return max;
+//    }
+//    public static int avr(int x,int y){
+//        int     avr = (x + y) / 2;
+//        System.out.println("The answer is " + avr);
+//        return avr;
+//    }
 
 
 

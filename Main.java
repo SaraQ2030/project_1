@@ -35,184 +35,188 @@ public class Main {
             System.out.println();
         }
         String num;
-        String num_x="123456789";
+        String num_x = "123456789";
         String numx;
         String num_2;
 
 //--------------------------------------------------choose 1 player /2player--------------------------------------------
-        System.out.println("Choose 1 for one player OR  2 for tow players:");
-        int player = input.nextInt();
-        switch (player) {
-            case 1:
-                //---------------------------------------------------1player----------------------------------------------------------
-                System.out.println("Choose a role X or O");
-                String role = input.next();
-                //Start to play---------------------------------------------------------------------------------------------
-                if (role.equalsIgnoreCase("x")) {
-                    String rolx = "o";
+        try {
+            System.out.println("Choose 1 for one player OR  2 for tow players:");
+            int player = input.nextInt();
+            switch (player) {
+                case 1:
+                    //---------------------------------------------------1player----------------------------------------------------------
+                    System.out.println("Choose a role X or O");
+                    String role = input.next();
+//                    if ( !role.equalsIgnoreCase("X")  || ( !role.equalsIgnoreCase("O")) ){
+//                        throw new Exception( "Enter X or O only");    }
 
-                    while (full(board) && (!win(board))) {
-                        do {
-                            System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
-                            num = input.next();
-                            if (check_availble(board, num)) {
-                                place_role(board, num, role);
-                                win(board);
-                                break;
+                    //Start to play---------------------------------------------------------------------------------------------
+                    if (role.equalsIgnoreCase("x")) {
+                        String rolx = "o";
 
-                            } else
-                                System.out.println("choose again");
-
-                        } while (!check_availble(board, num));
-
-                        if (!win(board)) {
-                            if (full(board)) {
-                                do {
-                                    numx=randomNumberGenerator(num_x);
-                                    if (check_availble(board, numx)) {
-                                        place_role(board, numx, rolx);
-                                        win(board);
-                                        break;
-                                    } else
-                                        System.out.println("choose again");
-                                } while (!check_availble(board, num));
-                            }
-
-
-                        }
-                    }
-                    print_score(board);
-
-
-                }
-                else if (role.equalsIgnoreCase("o")) {
-                    String rolx = "x";
-
-                    while (  full(board) && (! win(board)) ) {
-                        do {
-                            System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
-                            num = input.next();
-                            if (check_availble(board, num)) {
-                                place_role(board, num, role);
-                                win(board);
-                                break;
-
-                            } else
-                                System.out.println("choose again");
-
-                        } while (!check_availble(board, num));
-
-                        if (!win(board)) {
-                            if (full(board)){
-                                do {
-                                    numx=randomNumberGenerator(num_x);
-                                    if (check_availble(board, numx)) {
-                                        place_role(board, numx, rolx);
-                                        win(board);
-                                        break;
-                                    } else
-                                        System.out.println("choose again");
-                                } while (!check_availble(board, num));
-                            }
-                        }
-                    }
-                    print_score(board);
-                }
-                break;
-            case 2:
-
-                //-------------------------------------------------2player------------------------------------------------------------
-
-                //--Ask the user to pick a role (X or O)--------------------------------------------------------------------
-                System.out.println("Choose a role X or O");
-                 role = input.next();
-
-
-
-                //Start to play---------------------------------------------------------------------------------------------
-                if (role.equalsIgnoreCase("x")) {
-                    String rolx = "o";
-
-                    while (full(board) && (!win(board))) {
-                        do {
-                            System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
-                            num = input.next();
-                            if (check_availble(board, num)) {
-                                place_role(board, num, role);
-                                win(board);
-                                break;
-
-                            } else
-                                System.out.println("choose again");
-
-                        } while (!check_availble(board, num));
-
-                        if (!win(board)) {
-                            if (full(board)) {
-                                do {
-
-                                    System.out.println("Player 2:  Enter number");  //اسوي throw enter number from 1-9
-                                    num_2 = input.next();
-                                    if (check_availble(board, num_2)) {
-                                        place_role(board, num_2, rolx);
-                                        win(board);
-                                        break;
-                                    } else
-                                        System.out.println("choose again");
-                                } while (!check_availble(board, num));
-                            }
-
-
-                        }
-                    }
-                    print_score(board);
-
-
-                }
-                else if (role.equalsIgnoreCase("o")) {
-                String rolx = "x";
-
-                while (  full(board) && (! win(board)) ) {
-                    do {
-                        System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
-                        num = input.next();
-                        if (check_availble(board, num)) {
-                            place_role(board, num, role);
-                            win(board);
-                            break;
-
-                        } else
-                            System.out.println("choose again");
-
-                    } while (!check_availble(board, num));
-
-                    if (!win(board)) {
-                        if (full(board)){
+                        while (full(board) && (!win(board))) {
                             do {
-
-                                System.out.println("Player 2:  Enter number");  //اسوي throw enter number from 1-9
-                                num_2 = input.next();
-                                if (check_availble(board, num_2)) {
-                                    place_role(board, num_2, rolx);
+                                System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
+                                num = input.next();
+                                if (check_availble(board, num)) {
+                                    place_role(board, num, role);
                                     win(board);
                                     break;
+
                                 } else
                                     System.out.println("choose again");
+
                             } while (!check_availble(board, num));
+
+                            if (!win(board)) {
+                                if (full(board)) {
+                                    do {
+                                        numx = randomNumberGenerator(num_x);
+                                        if (check_availble(board, numx)) {
+                                            place_role(board, numx, rolx);
+                                            win(board);
+                                            break;
+                                        } else
+                                            System.out.println("choose again");
+                                    } while (!check_availble(board, num));
+                                }
+
+
+                            }
                         }
+                        print_score(board);
 
 
+                    } else if (role.equalsIgnoreCase("o")) {
+                        String rolx = "x";
+
+                        while (full(board) && (!win(board))) {
+                            do {
+                                System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
+                                num = input.next();
+                                if (check_availble(board, num)) {
+                                    place_role(board, num, role);
+                                    win(board);
+                                    break;
+
+                                } else
+                                    System.out.println("choose again");
+
+                            } while (!check_availble(board, num));
+
+                            if (!win(board)) {
+                                if (full(board)) {
+                                    do {
+                                        numx = randomNumberGenerator(num_x);
+                                        if (check_availble(board, numx)) {
+                                            place_role(board, numx, rolx);
+                                            win(board);
+                                            break;
+                                        } else
+                                            System.out.println("choose again");
+                                    } while (!check_availble(board, num));
+                                }
+                            }
+                        }
+                        print_score(board);
                     }
-                }
-                    print_score(board);
-                      }
+                    break;
+                case 2://-------------------------------------------------2player------------------------------------------------------------
+
+                    //--Ask the user to pick a role (X or O)--------------------------------------------------------------------
+                    System.out.println("Choose a role X or O");
+                    role = input.next();
+//                    if ( !role.equalsIgnoreCase("x")  || ( !role.equalsIgnoreCase("o")) ){                // if i use throw the if condition below not work
+//                        throw new Exception( "Enter X or O only");    }
+
+                    //Start to play---------------------------------------------------------------------------------------------
+                    if (role.equalsIgnoreCase("x")) {
+                        String rolx = "o";
+
+                        while (full(board) && (!win(board))) {
+                            do {
+                                System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
+                                num = input.next();
+                                if (check_availble(board, num)) {
+                                    place_role(board, num, role);
+                                    win(board);
+                                    break;
+
+                                } else
+                                    System.out.println("choose again");
+
+                            } while (!check_availble(board, num));
+
+                            if (!win(board)) {
+                                if (full(board)) {
+                                    do {
+
+                                        System.out.println("Player 2:  Enter number");  //اسوي throw enter number from 1-9
+                                        num_2 = input.next();
+                                        if (check_availble(board, num_2)) {
+                                            place_role(board, num_2, rolx);
+                                            win(board);
+                                            break;
+                                        } else
+                                            System.out.println("choose again");
+                                    } while (!check_availble(board, num));
+                                }
 
 
+                            }
+                        }
+                        print_score(board);
 
 
-                break;
-            default:
-                System.out.println("Choose 1 or 2 ");
+                    } else if (role.equalsIgnoreCase("o")) {
+                        String rolx = "x";
+
+                        while (full(board) && (!win(board))) {
+                            do {
+                                System.out.println("Player 1:  Enter number");  //اسوي throw enter number from 1-9
+                                num = input.next();
+                                if (check_availble(board, num)) {
+                                    place_role(board, num, role);
+                                    win(board);
+                                    break;
+
+                                } else
+                                    System.out.println("choose again");
+
+                            } while (!check_availble(board, num));
+
+                            if (!win(board)) {
+                                if (full(board)) {
+                                    do {
+
+                                        System.out.println("Player 2:  Enter number");  //اسوي throw enter number from 1-9
+                                        num_2 = input.next();
+                                        if (check_availble(board, num_2)) {
+                                            place_role(board, num_2, rolx);
+                                            win(board);
+                                            break;
+                                        } else
+                                            System.out.println("choose again");
+                                    } while (!check_availble(board, num));
+                                }
+
+
+                            }
+                        }
+                        print_score(board);
+                    }
+
+
+                    break;
+                default:
+                    System.out.println("Choose 1 or 2 ");
+            }
+        }catch (InputMismatchException e){
+            System.out.println("Enter number 1 or 2 ");
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
@@ -259,20 +263,20 @@ public class Main {
 
     public static String randomNumberGenerator(String num_x) {
         // create random string builder
-        StringBuilder sb = new StringBuilder();
+        StringBuilder str_num = new StringBuilder();
         // create an object of Random class
-        Random random = new Random();
+        Random r = new Random();
         // specify length of random string
         for (int i = 0; i < 1; i++) {
             // generate random index number
-            int index = random.nextInt(num_x.length());
+            int index = r.nextInt(num_x.length());
             // get character specified by index
             // from the string
             char randomChar = num_x.charAt(index);
             // append the character to string builder
-            sb.append(randomChar);
+            str_num.append(randomChar);
         }
-        String randomString = sb.toString();
+        String randomString = str_num.toString();
         num_x = randomString;
         return num_x;
     }
